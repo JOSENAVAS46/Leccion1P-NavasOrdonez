@@ -1,0 +1,80 @@
+<div class="container">
+    <form (ngSubmit)="addPerson()" #personForm="ngForm">
+        <div class="form-group">
+            <label for="nombre">Nombre:</label>
+            <input type="text" name="nombre" class="form-control" id="nombre" [(ngModel)]="nombre" required>
+        </div>
+        <div class="form-group">
+            <label for="edad">Edad:</label>
+            <input type="number" name="edad" class="form-control" id="edad" [(ngModel)]="edad" required>
+        </div>
+        <div class="form-group">
+            <label for="correo">Correo electrónico:</label>
+            <input type="email" name="correo" class="form-control" id="correo" [(ngModel)]="correo" required>
+        </div>
+        <div class="form-group">
+            <label for="telefono">Teléfono:</label>
+            <input type="tel" name="telefono" class="form-control" id="telefono" [(ngModel)]="telefono" required>
+        </div>
+        <div class="form-group">
+            <label for="direccion">Dirección:</label>
+            <input type="text" name="direccion" class="form-control" id="direccion" [(ngModel)]="direccion" required>
+        </div>
+        <div class="form-group">
+            <label for="fechaNac">Fecha de nacimiento:</label>
+            <input type="date"  name="fechaNac" class="form-control" id="fechaNac" [(ngModel)]="fechaNac" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Agregar</button>
+    </form>
+
+    <h2>Lista de Personas</h2>
+    <table class="table mt-4">
+        <thead>
+            <tr>
+                <th scope="col">Nombre</th>
+                <th scope="col">Edad</th>
+                <th scope="col">Correo electrónico</th>
+                <th scope="col">Teléfono</th>
+                <th scope="col">Dirección</th>
+                <th scope="col">Fecha de nacimiento</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let person of people">
+                <td>{{ person.name }}</td>
+                <td>{{ person.age }}</td>
+                <td>{{ person.email }}</td>
+                <td>{{ person.phone }}</td>
+                <td>{{ person.address }}</td>
+                <td>{{ person.dob | date }}</td>
+                <td>
+                    <button type="button" class="btn btn-danger" (click)="removePerson(person)">Eliminar</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2>Lista de Personas eliminados</h2>
+    <table class="table mt-4">
+        <thead>
+            <tr>
+                <th scope="col">Nombre</th>
+                <th scope="col">Edad</th>
+                <th scope="col">Correo electrónico</th>
+                <th scope="col">Teléfono</th>
+                <th scope="col">Dirección</th>
+                <th scope="col">Fecha de nacimiento</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let deletedPerson of deletedPeople">
+                <td>{{ deletedPerson.name }}</td>
+                <td>{{ deletedPerson.age }}</td>
+                <td>{{ deletedPerson.email }}</td>
+                <td>{{ deletedPerson.phone }}</td>
+                <td>{{ deletedPerson.address }}</td>
+                <td>{{ deletedPerson.dob | date }}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
